@@ -406,6 +406,9 @@ class DateDataParser(object):
         if isinstance(date_string, bytes):
             date_string = date_string.decode('utf-8')
 
+        if not date_string.strip():
+            return
+
         res = parse_with_formats(date_string, date_formats or [], self._settings)
         if res['date_obj']:
             return res
